@@ -14,7 +14,7 @@ THRESHOLD = 2
 visualization = True
 
 # The animation drawing delay in milliseconds
-DELAY = 5
+DELAY = 3
 
 
 def midpoint(v1: tuple[int, int], v2: tuple[int, int]) -> tuple[int, int]:
