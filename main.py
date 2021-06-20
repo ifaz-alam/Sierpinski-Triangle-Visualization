@@ -45,7 +45,7 @@ def triangle(screen: pygame.Surface, v1: tuple[int, int], v2: tuple[int, int], v
         pygame.display.flip()
         pygame.time.wait(3)
 
-        # Draw centre sub-triangle
+        # Draw the centre sub-triangle
         pygame.gfxdraw.aapolygon(screen, [midpoint1, midpoint2, midpoint3], (41, 192, 255))
 
         pygame.display.flip()
