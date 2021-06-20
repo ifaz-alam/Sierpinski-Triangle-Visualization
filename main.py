@@ -4,11 +4,17 @@ A sierpinski triangle visualization using recursion
 import pygame
 import pygame.gfxdraw
 
-FOREGROUND = (255, 110, 40)
 BACKGROUND = (40, 40, 40)
+TRIANGLE_COLOUR = (141, 192, 255)
 
 # A constant denoting the side length threshold for the triangle
 THRESHOLD = 2
+
+# turn this off if you would simply like to see the final result
+visualization = True
+
+# The animation drawing delay in milliseconds
+DELAY = 5
 
 
 def midpoint(v1: tuple[int, int], v2: tuple[int, int]) -> tuple[int, int]:
@@ -33,23 +39,25 @@ def triangle(screen: pygame.Surface, v1: tuple[int, int], v2: tuple[int, int], v
 
     if side_length < THRESHOLD:
         # Display the triangle on the screen
-        pygame.gfxdraw.aapolygon(screen, [v1, v2, v3], (41, 192, 255),)
+        pygame.gfxdraw.aapolygon(screen, [v1, v2, v3], TRIANGLE_COLOUR)
     else:
         # Subdivide the triangle further, and fill the center of the triangle division with "negative space"
-        pygame.gfxdraw.aapolygon(screen, [v1, v2, v3], (41, 192, 255))
+        pygame.gfxdraw.aapolygon(screen, [v1, v2, v3], TRIANGLE_COLOUR)
 
         midpoint1 = midpoint(v1, v2)  # midpoint of /
         midpoint2 = midpoint(v1, v3)  # midpoint of -
         midpoint3 = midpoint(v2, v3)  # midpoint of \
 
-        pygame.display.flip()
-        pygame.time.wait(3)
+        if visualization:
+            pygame.display.flip()
+            pygame.time.wait(DELAY)
 
         # Draw the centre sub-triangle
         pygame.gfxdraw.aapolygon(screen, [midpoint1, midpoint2, midpoint3], (41, 192, 255))
 
-        pygame.display.flip()
-        pygame.time.wait(3)
+        if visualization:
+            pygame.display.flip()
+            pygame.time.wait(DELAY)
 
         # Draw the 3 sub-triangles recursively
         triangle(screen, v1, midpoint1, midpoint2)
@@ -60,6 +68,7 @@ def triangle(screen: pygame.Surface, v1: tuple[int, int], v2: tuple[int, int], v
 if __name__ == '__main__':
     # Initialize the pygame window
     pygame.init()
+    pygame.display.set_caption('Sierpinski Triangle Visualization')
     window = pygame.display.set_mode((800, 800))
     window.fill(BACKGROUND)
 
