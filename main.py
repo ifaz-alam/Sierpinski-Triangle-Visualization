@@ -10,6 +10,7 @@ BACKGROUND = (40, 40, 40)
 # A constant denoting the side length threshold for the triangle
 THRESHOLD = 2
 
+
 def midpoint(v1: tuple[int, int], v2: tuple[int, int]) -> tuple[int, int]:
     """"Return the midpoint of v1 and v2"""
     return (v1[0] + v2[0]) // 2, (v1[1] + v2[1]) // 2
