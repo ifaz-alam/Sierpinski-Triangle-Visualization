@@ -1,9 +1,7 @@
 # Sierpinski Triangle Visualization
  A recursive visualization of the sierpinski triangle using Pygame.
  
- End Result:
 ![image](https://user-images.githubusercontent.com/45114241/122685861-10374500-d1dc-11eb-83df-b5a9d949ed7f.png)
-
 
 In order for the visualization to run smoothly refrain from switching windows or clicking on the visualization window.
 
